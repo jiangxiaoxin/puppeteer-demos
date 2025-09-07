@@ -16,6 +16,9 @@ pnpm-debug.log*
 .env
 .env.*
 
+*.pdf
+*.png
+
 # Build outputs
 dist/
 build/
