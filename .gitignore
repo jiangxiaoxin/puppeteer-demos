@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Package managers
+package-lock.json
+yarn.lock
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment
+.env
+.env.*
+
+# Build outputs
+dist/
+build/
+coverage/
+tmp/
+temp/
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Caches
+.cache/
+.parcel-cache/
+
+# Puppeteer
+.cache/puppeteer/
+
+

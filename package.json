@@ -1,0 +1,17 @@
+{
+  "name": "node-screen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node capture.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Scroll capture webpage to image or PDF via Puppeteer",
+  "type": "module",
+  "dependencies": {
+    "puppeteer": "^24.19.0",
+    "puppeteer-core": "^24.19.0"
+  }
+}
