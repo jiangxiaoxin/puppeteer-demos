@@ -41,6 +41,14 @@ node capture-container.js http://127.0.0.1:3333 --png --out=container.png
 # or via npm script
 pnpm run capture:container -- http://127.0.0.1:3333 --png --out=container.png
 pnpm run capture:container -- http://127.0.0.1:3333 --pdf --out=container.pdf
+
+# Capture after login (fill #username/#password, click #login)
+pnpm run capture:login -- http://127.0.0.1:3333/login --png --out=after-login.png
+# Options
+# --user=<username> (default admin)
+# --pass=<password> (default 123456)
+# --pdf to export single-page full-height PDF
+pnpm run capture:login -- http://127.0.0.1:3333/login --pdf --out=after-login.pdf
 ```
 
 Parameters:
