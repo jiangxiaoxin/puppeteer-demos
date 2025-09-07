@@ -35,6 +35,12 @@ node capture.js https://echarts.apache.org/handbook/zh/how-to/cross-platform/ser
 
 # Custom viewport and waits
 node capture.js http://127.0.0.1:3333 --png --width=1440 --height=900 --wait=300
+
+# Capture container only (class .export-container by default)
+node capture-container.js http://127.0.0.1:3333 --png --out=container.png
+# or via npm script
+pnpm run capture:container -- http://127.0.0.1:3333 --png --out=container.png
+pnpm run capture:container -- http://127.0.0.1:3333 --pdf --out=container.pdf
 ```
 
 Parameters:
@@ -44,6 +50,7 @@ Parameters:
 - `--width=<px>` `--height=<px>`: viewport size for rendering (default 1280x800)
 - `--wait=<ms>`: extra wait after scrolling to settle layout (default 300)
 - `--timeout=<ms>`: navigation timeout (default 60000)
+- `--selector=<css>`: container capture only; defaults to `.export-container`
 
 Notes:
 
