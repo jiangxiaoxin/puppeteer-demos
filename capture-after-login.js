@@ -85,11 +85,13 @@ function buildOutputPath(urlString, format, explicitName) {
   return resolve(__dirname, base);
 }
 
-async function loginAndWaitForRedirect(page, { username, password, timeoutMs }) {
+async function loginAndWaitForRedirect(page, { username, password, subsysId, timeoutMs }) {
   await page.waitForSelector('#username', { timeout: timeoutMs });
   await page.waitForSelector('#password', { timeout: timeoutMs });
+  await page.waitForSelector('#subsysId', { timeout: timeoutMs });
   await page.type('#username', username, { delay: 10 });
   await page.type('#password', password, { delay: 10 });
+  await page.type('#subsysId', subsysId, { delay: 10 });
 
   const [response] = await Promise.all([
     page.waitForNavigation({ waitUntil: 'networkidle2', timeout: timeoutMs }),
@@ -112,7 +114,8 @@ async function main() {
   const delayAfterScrollMs = parseIntArg(getArgFromList(argv, '--wait'), 300);
   const timeoutMs = parseIntArg(getArgFromList(argv, '--timeout'), 60_000);
   const username = getArgFromList(argv, '--user') || 'admin';
-  const password = getArgFromList(argv, '--pass') || '123456';
+  const password = getArgFromList(argv, '--pass') || 'QUVTL0diYS90cW10UnlyTndIa3QzNVFOdz09';
+  const subsysId = getArgFromList(argv, '--subysId', "10001");
 
   if (!wantPdf && !wantPng) {
     console.error('请指定输出格式: 使用 --png 或 --pdf');
@@ -128,7 +131,7 @@ async function main() {
   await page.setViewport({ width, height, deviceScaleFactor: 1 });
 
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
-  await loginAndWaitForRedirect(page, { username, password, timeoutMs });
+  await loginAndWaitForRedirect(page, { username, password, subsysId, timeoutMs });
 
   // 登录后页面稳定
   await page.waitForNetworkIdle({ idleTime: 500, timeout: timeoutMs });

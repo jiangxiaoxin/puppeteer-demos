@@ -43,12 +43,13 @@ pnpm run capture:container -- http://127.0.0.1:3333 --png --out=container.png
 pnpm run capture:container -- http://127.0.0.1:3333 --pdf --out=container.pdf
 
 # Capture after login (fill #username/#password, click #login)
-pnpm run capture:login -- http://127.0.0.1:3333/login --png --out=after-login.png
+pnpm run capture:login -- http://127.0.0.1:3333 --png --out=after-login.png
 # Options
 # --user=<username> (default admin)
 # --pass=<password> (default 123456)
 # --pdf to export single-page full-height PDF
-pnpm run capture:login -- http://127.0.0.1:3333/login --pdf --out=after-login.pdf
+pnpm run capture:login -- http://127.0.0.1:3333 --pdf --out=after-login.pdf
+# 这个例子就能说明，可以登录页面，等跳转完毕后，调接口获取数据，形成页面后，再截图保存
 ```
 
 Parameters:
