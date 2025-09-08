@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node capture.js",
     "capture:container": "node capture-container.js",
-    "capture:login": "node capture-after-login.js"
+    "capture:login": "node capture-after-login.js",
+    "schedule": "node schedule.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
   "description": "Scroll capture webpage to image or PDF via Puppeteer",
   "type": "module",
   "dependencies": {
+    "node-cron": "^3.0.3",
     "puppeteer": "^24.19.0",
     "puppeteer-core": "^24.19.0"
   }

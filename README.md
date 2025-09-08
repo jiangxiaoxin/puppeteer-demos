@@ -52,6 +52,15 @@ pnpm run capture:login -- http://127.0.0.1:3333 --pdf --out=after-login.pdf
 # 这个例子就能说明，可以登录页面，等跳转完毕后，调接口获取数据，形成页面后，再截图保存
 ```
 
+### Schedule with Node (daily 12:00)
+
+```bash
+pnpm run schedule
+# Keep this process running (e.g. in a background service or PM2)
+```
+
+The scheduler uses `node-cron` with timezone `Asia/Shanghai` and calls the login capture daily at 12:00. Edit `schedule.js` to change the command or time.
+
 Parameters:
 
 - `--png` / `--pdf`: output format (one is required; png is default if neither specified)
@@ -67,3 +76,26 @@ Notes:
 
 
 
+```shell
+# 可以用pm2启动schedule任务，这样让脚本在后台长期运行、异常崩溃自动重启、集中管理日志，并支持开机自启。后台就不需要定时调用node脚本了，他只要定时去查看路径下有没有当天的图片，有就发送邮件。没有就发邮件给开发，及时让开发看问题。
+# 安装
+npm i -g pm2
+
+# 启动并命名
+pm2 start schedule.js --name node-screen-scheduler
+
+# 查看状态/日志
+pm2 ls
+pm2 logs node-screen-scheduler
+
+# 重启/停止/删除
+pm2 restart node-screen-scheduler
+pm2 stop node-screen-scheduler
+pm2 delete node-screen-scheduler
+
+# 保存当前进程列表（用于开机自启恢复）
+pm2 save
+
+# 配置开机自启（按提示执行生成的命令）
+pm2 startup
+```
